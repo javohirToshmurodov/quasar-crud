@@ -1,0 +1,20 @@
+// app global css in SCSS form
+h4{
+   margin: 10px;
+}
+.addproductform{
+   min-width: 500px;
+   border: 1px solid #ccc;
+border-radius: 5px;
+   width: 600px;
+   display: flex;
+   justify-content: center;
+   // align-items: center;
+   flex-direction: column;
+   padding: 10px;
+   label{
+      width: 100% !important;
+      margin-bottom: 20px;
+      background: none;
+   }
+}
