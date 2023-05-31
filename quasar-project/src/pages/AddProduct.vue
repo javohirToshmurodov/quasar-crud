@@ -13,7 +13,8 @@
 
          <q-input :rules="[val => val && val.length > 0 || 'Please, fill the address']" filled v-model="form.address"
             label="Product address" class="" />
-         <q-input type="date" filled v-model="form.created_date" label="Product created-date" class="" />
+         <q-input :rules="[val => val && val.length > 0 || 'Please, fill the date']" type="date" filled
+            v-model="form.created_date" label="Product created-date" class="" />
 
          <div class="col-lg-12 col-12 q-gutter-sm">
             <q-btn type="submit" class="float-right" label="Save" icon="save" color="positive" />
@@ -34,7 +35,8 @@ export default defineComponent({
       const { post } = postsServices()
       const $q = useQuasar()
       const router = useRouter()
-      const route = useRouter()
+
+      // form elements
       const form = ref({
          product_type_id: "",
          name_uz: "",
@@ -43,12 +45,12 @@ export default defineComponent({
          created_date: ""
       })
 
-      // onMounted(() => {
-      //    console.log(route.params.id);
-      // })
+
+      // add product function onsubmit
       const onSubmit = async () => {
          try {
             await post(form.value)
+            // notify
             $q.notify({ message: 'Product has been added successfully!', icon: "check", color: 'positive' })
             router.push({ name: 'home' })
          } catch (error) {

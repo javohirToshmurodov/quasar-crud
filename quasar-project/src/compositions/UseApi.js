@@ -13,10 +13,7 @@ export default function useApi(url) {
          console.log(error);
       }
    }
-
-
-
-   // product post
+   // product post (create)
 
    const post = async (form) => {
       try {
@@ -26,14 +23,18 @@ export default function useApi(url) {
          console.log(error);
       }
    }
+
+   // product update
    const update = async (form) => {
       try {
-         const { data } = await api.put(`${url}/${form.id}`, form)
+         const { data } = await api.put(url, form)
          return data
       } catch (error) {
          console.log(error);
       }
    }
+
+   // product remove (delete)
    const remove = async (id) => {
       try {
          const { data } = await api.delete(`${url}/${id}`)
